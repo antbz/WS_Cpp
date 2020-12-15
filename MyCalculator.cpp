@@ -47,7 +47,40 @@ int ex3() {
     return 0;
 }
 
+int ex4() {
+    cout << "Welcome to MyCalculator!" << endl;
+    cout << "App developed by António Bezerra." << endl;
+
+    cout << "Please input an integer number: ";
+    int num1;
+    cin >> num1;
+
+    cout << "Please input an operator (+, -, *, /): ";
+    char op;
+    cin >> op;
+    
+    cout << "Please input an integer number: ";
+    int num2;
+    cin >> num2;
+
+    int result;
+
+    if (op == '+') {
+        result = num1 + num2;
+    } else if (op == '-') {
+        result = num1 - num2;
+    } else if (op == '*') {
+        result = num1 * num2;
+    } else if (op == '/') {
+        result = num1 / num2;
+    }
+
+    cout << "Result: " << result << endl;
+
+    return 0;
+}
+
 int main() {
-    ex2();
+    ex4();
     return 0;
 }
