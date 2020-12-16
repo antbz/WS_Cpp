@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int ex3() {
+int main() {
     cout << "Welcome to MyCalculator!" << endl;
     cout << "App developed by António Bezerra." << endl;
 
