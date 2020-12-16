@@ -9,7 +9,7 @@ void printGreeting() {
     cout << "Welcome to MyCalculator!" << endl;
     cout << "App developed by António Bezerra." << endl;
     cout << "Operators: + - * /" << endl;
-    cout << "Accessing last result: m or mem" << endl;
+    cout << "Accessing last result: m" << endl;
     cout << "Exiting: x or exit" << endl;
     cout << "---------------------------------" << endl;
 }
@@ -22,7 +22,7 @@ string getWithMessage(string message) {
 }
 
 double to_num(string str) {
-    if (str == "m" || str == "mem") {
+    if (str == "m") {
         cout << "mem: " << last_result << endl;
         return last_result;
     }
