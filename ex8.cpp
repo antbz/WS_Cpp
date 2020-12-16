@@ -9,7 +9,8 @@ void printGreeting() {
     cout << "Welcome to MyCalculator!" << endl;
     cout << "App developed by António Bezerra." << endl;
     cout << "Operators: + - * /" << endl;
-    cout << "Accessing last result: mem" << endl;
+    cout << "Accessing last result: m or mem" << endl;
+    cout << "Exiting: x or exit" << endl;
     cout << "---------------------------------" << endl;
 }
 

@@ -3,10 +3,22 @@
 #include <vector>
 
 using namespace std;
-    
-vector<double> result_history;
 
-void printGreeting() {
+class MyCalculator {
+private:
+    vector<double> result_history;
+    bool stop = false;
+
+    void printGreeting();
+    string getWithMessage(string message);
+    double getFromMem(string pos);
+    double to_num(string str);
+    double calculateResult(double num1, double num2, string op);
+public:
+    void run();
+};
+
+void MyCalculator::printGreeting() {
     cout << "Welcome to MyCalculator!" << endl;
     cout << "App developed by António Bezerra." << endl;
     cout << "Operators: + - * /" << endl;
@@ -15,14 +27,15 @@ void printGreeting() {
     cout << "---------------------------------" << endl;
 }
 
-string getWithMessage(string message) {
+string MyCalculator::getWithMessage(string message) {
     string op;
     cout << message;
     getline(cin, op);
+    stop = (op == "x" || op == "exit");
     return op;
 }
 
-double getFromMem(string pos) {
+double MyCalculator::getFromMem(string pos) {
     if (pos.size() == 1 && !pos.empty()) {
         return result_history.back();
     } else if (pos[1] == '-') {
@@ -36,7 +49,7 @@ double getFromMem(string pos) {
     }
 }
 
-double to_num(string str) {
+double MyCalculator::to_num(string str) {
     if (str[0] == 'm') {
         double mem = getFromMem(str);
         cout << "mem: " << getFromMem(str) << endl;
@@ -45,7 +58,7 @@ double to_num(string str) {
     return stod(str);
 }
 
-double calculateResult(double num1, double num2, string op) {
+double MyCalculator::calculateResult(double num1, double num2, string op) {
     double result;
     if (op == "+") {
         result = num1 + num2;
@@ -63,24 +76,24 @@ double calculateResult(double num1, double num2, string op) {
     return result;
 }
 
-int main() {
+void MyCalculator::run() {
     printGreeting();
 
     while (true) {
         string aux = getWithMessage("Input first number: ");
-        if (aux == "x" || aux == "exit") {
+        if (stop) {
             break;
         } 
         double num1 = to_num(aux);
 
         aux = getWithMessage("Input operator: ");
-        if (aux == "x" || aux == "exit") {
+        if (stop) {
             break;
         }
         string op = aux;
         
         aux = getWithMessage("Input second number: ");
-        if (aux == "x" || aux == "exit") {
+        if (stop) {
             break;
         } 
         double num2 = to_num(aux);
@@ -89,6 +102,12 @@ int main() {
         cout << "Result: " << result << endl;
         result_history.push_back(result);
     }
+}
+
+int main() {
+    MyCalculator calc;
+
+    calc.run();
 
     return 0;
 }
